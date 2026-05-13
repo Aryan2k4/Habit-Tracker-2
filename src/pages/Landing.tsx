@@ -165,8 +165,8 @@ export default function Landing() {
       {/* Footer */}
       <footer className="container mx-auto px-4 py-8 border-t border-border">
         <div className="flex items-center justify-between text-sm text-muted-foreground">
-          <span>© 2024 Bloom. Made with 💚</span>
-          <span>Free forever</span>
+          <span>Built & Designed by Aryan Goswami 🌱</span>
+          <span>Grow daily. Bloom endlessly.</span>
         </div>
       </footer>
     </div>
