@@ -1,5 +1,9 @@
 # Bloom
 
+[Hosted app](https://bloom-garden-habits-aryan.dualdandelion32.chatgpt.site) · [Rebuild source](https://github.com/Aryan2k4/Habit-Tracker-2/tree/bloom-rebuild)
+
+The hosted app currently requires the owner's connected ChatGPT account. The original project remains on the repository's `master` branch.
+
 Bloom turns meaningful goals into scheduled habits and a garden that grows with real check-ins. This is a fresh full-stack rebuild; the previous React/Supabase project is preserved in the sibling `Habit-Tracker-main` directory.
 
 ## Stack

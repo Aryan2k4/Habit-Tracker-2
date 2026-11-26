@@ -1945,7 +1945,8 @@ function AI({
               const ai = await import("../../lib/ai");
               setAnswer(
                 await ai.askAI(
-                  `User question: ${prompt}\nActual aggregate progress (no private journal text): ${insights(data, today)}`,
+                  prompt,
+                  insights(data, today),
                 ),
               );
             } catch (e) {

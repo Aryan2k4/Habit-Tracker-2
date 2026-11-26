@@ -31,8 +31,11 @@ export async function loadAI(onProgress: (text: string) => void) {
     engine = await bounded(CreateWebWorkerMLCEngine(worker, selected.model_id, {initProgressCallback:p=>onProgress(p.text)}, {context_window_size:2048}), 180000);
   } catch(error) {worker?.terminate(); worker=null; engine=null; throw error;}
 }
-export async function askAI(prompt:string) {
+export async function askAI(prompt:string, progress:string) {
   if (!engine) throw new Error('Load the local model first.');
-  const response = await bounded(engine.chat.completions.create({messages:[{role:'system',content:'You are Bloom, a concise and kind habit coach. Suggest practical, small daily actions. Never invent user history. Do not give medical advice. Use plain text and stay below 160 words.'},{role:'user',content:prompt}],temperature:0.6,max_tokens:300}), 90000);
+  const response = await bounded(engine.chat.completions.create({messages:[
+    {role:'system',content:'You are Bloom, a kind habit coach. Answer the exact question in at most 100 words. Respect the requested time budget and number of suggestions. For a two-minute habit, suggest ONE action that takes at most two minutes, a cue, and a clear stopping point. Example: After breakfast, read one paragraph for up to two minutes, then stop. Do not turn a small request into a full daily routine. Do not prescribe wake-up times, diets, or medical advice. Refer only to the supplied progress; never invent personal history. Use plain text.'},
+    {role:'user',content:`Progress context (use only if relevant): ${progress}\n\nMy request: ${prompt}`}
+  ],temperature:0.3,max_tokens:220}), 90000);
   return response.choices[0]?.message.content ?? 'Please try again.';
 }
