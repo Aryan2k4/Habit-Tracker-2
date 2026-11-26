@@ -2,7 +2,7 @@
 
 [Hosted app](https://bloom-garden-habits-aryan.dualdandelion32.chatgpt.site) · [Rebuild source](https://github.com/Aryan2k4/Habit-Tracker-2/tree/bloom-rebuild)
 
-The hosted app currently requires the owner's connected ChatGPT account. The original project remains on the repository's `master` branch.
+The hosted app uses ChatGPT sign-in for personal data. The original project remains on the repository's `master` branch.
 
 Bloom turns meaningful goals into scheduled habits and a garden that grows with real check-ins. This is a fresh full-stack rebuild; the previous React/Supabase project is preserved in the sibling `Habit-Tracker-main` directory.
 
@@ -60,7 +60,7 @@ The timer continues across refreshes. Users explicitly save an elapsed session. 
 
 `.openai/hosting.json` binds this checkout to its Sites project and D1 database. The Sites pipeline builds the Worker, applies migrations, and publishes it. Authentication is provided by Sites and is not a portable standalone OAuth implementation. To host on another platform, supply a trusted identity adapter; never trust client-supplied identity headers on an unprotected origin.
 
-The initial Site audience is owner-only. Sharing the site with other people is separate from challenge invitation codes. A challenge code does not grant access to a private hosted site.
+Site audience is configured separately from application authentication and challenge invitation codes. Making the landing page public does not remove sign-in or owner scoping from personal data. A challenge code does not grant access if the Site audience is private.
 
 ## AI and reminder limits
 
